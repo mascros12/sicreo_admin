@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+<title>Eliminar {{zone.name}}</title>
+{% endblock %}
+
+{% block SalesPoint %}
+<li class="sub-menu">
+  <a class="active" href="javascript:;">
+    <i class="fas fa-store"></i>
+    <span>Puntos de Venta</span>
+    </a>
+  <ul class="sub">
+    <li><a href="{% url 'zoneList' %}">Zonas</a></li>
+    <li><a href="{% url 'salesPointList' %}">Lista</a></li>
+    <li><a href="{% url 'salesPointCreate' %}">Crear</a></li>
+  </ul>
+</li>
+{% endblock %}
+
+{% block content %}
+<div style="margin: auto;">
+    <br><br><br>
+<center>
+    <h3 class="text-dark mb-0">¿Esta seguro que desea eliminar la Zona "{{ object.name }}"?</h3>
+</center>
+<center>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Si, estoy seguro</button>
+        <a class="btn btn-default" href="{% url 'zoneView' object.slug %}">Cancelar</a>
+    </form>
+</center>  
+</div>
+{% endblock %}

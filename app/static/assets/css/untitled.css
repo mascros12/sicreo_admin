@@ -1,0 +1,17 @@
+.bg-gradient-primary2 {
+  background-color: #1D6E91;
+  background-image: linear-gradient(180deg,#1D6E91 10%,#084D66);
+  background-size: cover;
+}
+
+img, svg {
+  padding: 10px;
+  margin: 10px;
+}
+
+.btn-primary2:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #1D6E91;
+  border-color: #1D6E91;
+}
+

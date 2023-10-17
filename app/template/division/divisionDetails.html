@@ -1,0 +1,71 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+<title>{{form.name}}</title>
+{% endblock %}
+
+{% block Division %}
+<li class="sub-menu">
+  <a class="active" href="javascript:;">
+    <i class="fas fa-copyright"></i>
+    <span>Cadenas</span>
+    </a>
+  <ul class="sub">
+    <li><a href="{% url 'divisionList' %}">Lista</a></li>
+    <li class="active"><a href="{% url 'divisionCreate' %}">Crear</a></li>
+  </ul>
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="row mt">
+    <div class="col-lg-12">
+      <div class="row content-panel">
+        <div class="col-md-4 profile-text mt mb centered">
+          <div class="right-divider hidden-sm hidden-xs">
+            <h1>{{division.name}}</h1>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+        <div class="col-md-4 profile-text hidden-sm hidden-xs" >
+        </div>
+        <!-- /col-md-4 -->
+        <div class="col-md-4 centered">
+          <div class="profile-pic">
+            <br>
+            <br>           
+            <a href="{% url 'divisionEdit' division.id %}" class="btn btn-primary" style="color: azure;"><i class="fa fa-pencil"></i> Editar</a>
+            <a href="{% url 'divisionDelete' division.slug %}" class="btn btn-danger" style="color: azure;"><i class="fa fa-trash-o"></i> Eliminar</a>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+      </div>
+      <!-- /row -->
+    </div>
+    <div class="col-lg-12 mt">
+      <div class="row content-panel">
+        <br> 
+        <div class="row">             
+            <div class="col-md-12">
+                <h3>Logos</h3>
+            </div>
+        </div>   
+        <br>
+        <div class="row">
+            <div class="col-md-6 white-bg">
+                <label>Logo a Color</label>
+                <img src="{{ division.logo.url }}" alt="{{ imagen.logo }}" width="350em">
+            </div>
+            <div class="col-md-6 black-bg">
+                <label>Logo Blanco</label>
+                <img src="{{ division.logo_white.url }}" alt="{{ imagen.logo_white }}" width="350em">
+            </div>
+        </div>
+        <br><br><br>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

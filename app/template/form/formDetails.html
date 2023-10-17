@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+<title>{{form.name}}</title>
+{% endblock %}
+
+{% block Form %}
+<li class="sub-menu">
+  <a class="active" href="javascript:;">
+    <i class="fas fa-question"></i>
+    <span>Formularios</span>
+    </a>
+  <ul class="sub">
+    <li><a href="{% url 'formList' %}">Lista</a></li>
+    <li><a href="{% url 'formCreate' %}">Crear</a></li>
+  </ul>
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="row mt">
+    <div class="col-lg-12">
+      <div class="row content-panel">
+        <div class="col-md-4 profile-text mt mb centered">
+          <div class="right-divider hidden-sm hidden-xs">
+            <h1>{{form.name}}</h1>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+        <div class="col-md-4 profile-text hidden-sm hidden-xs" >
+        </div>
+        <!-- /col-md-4 -->
+        <div class="col-md-4 centered">
+          <div class="profile-pic">
+            <br>
+            <br>           
+            <button class="btn btn-primary"><a href="{% url 'formEdit' form.slug %}" class="fa fa-pencil" style="color: azure;"> Editar</a></button>
+            <button class="btn btn-danger "><a href="{% url 'formDelete' form.slug %}" class="fa fa-trash-o" style="color: azure;"> Eliminar</a></button>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+      </div>
+      <!-- /row -->
+    </div>
+    <div class="col-lg-12 mt">
+      <div class="row content-panel">
+        <br> 
+        <div class="row">             
+            <div class="col-md-12">
+                <h3>Información</h3>
+            </div>
+        </div>   
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Descripción</label>
+                <h4>&#160;{{form.description}}</h4>
+            </div>
+            <div class="col-md-6">
+                <label>Cadena</label>
+                <div class="row">
+                  <div class="col-md-6">
+                      <ul>
+                        {% for d in form.division.all %}
+                          <li class="h4">- {{d.name}}</li>
+                        {% endfor %}
+                      </ul>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}

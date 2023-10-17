@@ -1,0 +1,85 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+<title>Pregunta {{question.id}}</title>
+{% endblock %}
+
+{% block Form %}
+<li class="sub-menu">
+  <a class="active" href="javascript:;">
+    <i class="fas fa-question"></i>
+    <span>Formularios</span>
+    </a>
+    <ul class="sub">
+      <li><a href="{% url 'questionList' %}">Preguntas</a></li>
+      <li><a href="{% url 'formList' %}">Lista</a></li>
+      <li><a href="{% url 'formCreate' %}">Crear</a></li>
+    </ul>
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="row mt">
+    <div class="col-lg-12">
+      <div class="row content-panel">
+        <div class="col-md-4 profile-text mt mb centered">
+          <div class="right-divider hidden-sm hidden-xs">
+            <h1>{{question.question}}</h1>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+        <div class="col-md-4 profile-text hidden-sm hidden-xs" >
+        </div>
+        <!-- /col-md-4 -->
+        <div class="col-md-4 centered">
+          <div class="profile-pic">
+            <br>
+            <br>           
+            <a href="{% url 'questionEdit' question.slug %}" class="btn btn-primary " style="color: azure;"><i class="fa fa-pencil"></i> Editar</a>
+            <a href="{% url 'questionDelete' question.slug %}" class="btn btn-danger " style="color: azure;"><i class="fa fa-trash-o"></i> Eliminar</a>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+      </div>
+      <!-- /row -->
+    </div>
+    <div class="col-lg-12 mt">
+      <div class="row content-panel">
+        <br> 
+        <div class="row">             
+            <div class="col-md-12">
+                <h3>Información</h3>
+            </div>
+        </div>   
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Formulario</label>
+                <h4>&#160;{{question.form}}</h4>
+            </div>
+            <div class="col-md-6">
+                <label>Tipo</label>
+                <h4>&#160;{{question.qty_responses}}</h4>
+            </div>
+        </div>
+        <br><br>
+        <div class="container">
+          <h4>Cadenas</h4>
+          <div class="row">
+            <div class="col-md-6">
+                <ul>
+                  {% for d in object.division.all %}
+                    <li class="h4">- {{d.name}}</li>
+                  {% endfor %}
+                </ul>
+                
+            </div>
+        </div>
+      </div> 
+        <br><br><br>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}

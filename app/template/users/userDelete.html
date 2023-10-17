@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+<title>Eliminar {{form.username}}</title>
+{% endblock %}
+
+{% block content %}
+<div style="margin: auto;">
+    <br><br><br>
+<center>
+    <h3 class="text-dark mb-0">¿Esta seguro que desea eliminar al usuario de {{ object.username }}?</h3>
+</center>
+<center>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Si, estoy seguro</button>
+        <a class="btn btn-default" href="{% url 'user_list' %}">Cancelar</a>
+    </form>
+</center>  
+</div>
+{% endblock %}

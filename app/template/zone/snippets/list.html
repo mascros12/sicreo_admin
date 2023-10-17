@@ -1,0 +1,33 @@
+
+{% if object_list %}
+<div class="adv-table">
+    <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+      <thead>
+        <tr>
+            <th>Zona</th>
+            <th>Gerente</th>
+            <th>Usuario</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for zone in object_list  %}
+            <tr style="background-color: #f1f1f1;">
+                <td>{{ zone.name }}</td>
+                <td style="background-color: #f1f1f1;">{{ zone.manager }}</td>
+                <td style="background-color: #f1f1f1;">{{ zone.user }}</td>
+                <td >
+                    <a href="{% url 'zoneEdit' zone.slug %}" class="btn btn-primary btn-xs" style="color: azure;"><i class="fa fa-pencil"></i></a>
+                    <a href="{% url 'zoneDelete' zone.slug %}" class="btn btn-danger btn-xs" style="color: azure;"><i class="fa fa-trash-o"></i></a>
+                </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% else %}
+<h1>&nbsp;&nbsp;&nbsp; Zonas no encontrados...</h1> 
+{% endif %}

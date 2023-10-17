@@ -1,0 +1,53 @@
+
+{% if object_list %}
+<div class="adv-table">
+    <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
+      <thead>
+        <tr>
+            <th>Punto de Venta</th>
+            <th>Provincia</th>
+            <th>Cantón</th>
+            <th>División</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for salesPoint in object_list  %}
+            <tr style="background-color: #f1f1f1;">
+                <td><a href="{% url 'salesPointView' salesPoint.slug %}" style="color:rgb(80, 80, 80)"> {{ salesPoint.name }}</a></td>
+                <td style="background-color: #f1f1f1;">
+                    {% if salesPoint.province == "ALA" %}
+                        Alajuela
+                    {% elif salesPoint.province == "SJO" %}
+                        San Jose
+                    {% elif salesPoint.province == "HER" %}
+                        Heredia
+                    {% elif salesPoint.province == "CAR" %}
+                        Cartago
+                    {% elif salesPoint.province == "GUA" %}
+                        Guanacaste
+                    {% elif salesPoint.province == "PUN" %}
+                        Puntarenas
+                    {% elif salesPoint.province == "LIM" %}
+                        Limon
+                    {% else  %}
+                        Sin definir
+                    {% endif %}
+                </td>
+                <td style="background-color: #f1f1f1;">{{ salesPoint.canton }}</td>
+                <td style="background-color: #f1f1f1;">{{ salesPoint.division }}</td>
+                <td >
+                    <a href="{% url 'salesPointEdit' salesPoint.slug %}" class="btn btn-primary btn-xs" style="color: azure;"><i class="fa fa-pencil"></i></a>
+                    <a href="{% url 'salesPointDelete' salesPoint.slug %}" class="btn btn-danger btn-xs" style="color: azure;"><i class="fa fa-trash-o"></i></a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% else %}
+<h1>&nbsp;&nbsp;&nbsp; Puntos de Venta no encontrados...</h1> 
+{% endif %}

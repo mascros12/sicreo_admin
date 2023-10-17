@@ -1,0 +1,52 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+<title>{{zone.id}}</title>
+{% endblock %}
+
+{% block SalesPoint %}
+<li class="sub-menu">
+  <a class="active" href="javascript:;">
+    <i class="fas fa-store"></i>
+    <span>Puntos de Venta</span>
+    </a>
+  <ul class="sub">
+    <li><a href="{% url 'zoneList' %}">Zonas</a></li>
+    <li><a href="{% url 'salesPointList' %}">Lista</a></li>
+    <li><a href="{% url 'salesPointCreate' %}">Crear</a></li>
+  </ul>
+</li>
+{% endblock %}
+
+{% block content %}
+<div class="row mt">
+    <div class="col-lg-12">
+      <div class="row content-panel">
+        <div class="col-md-4 profile-text mt mb centered">
+          <div class="right-divider hidden-sm hidden-xs">
+            <h1>{{zone.name}}</h1>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+        <div class="col-md-4 profile-text mt mb centered">
+          <div class="right-divider hidden-sm hidden-xs">
+            <h1>{{zone.manager}}</h1>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+        <div class="col-md-4 centered">
+          <div class="profile-pic">
+            <br>
+            <br>           
+            <a href="{% url 'zoneEdit' zone.slug %}" class="btn btn-primary " style="color: azure;"><i class="fa fa-pencil"></i> Editar</a>
+            <a href="{% url 'zoneDelete' zone.slug %}" class="btn btn-danger " style="color: azure;"><i class="fa fa-trash-o"></i> Eliminar</a>
+          </div>
+        </div>
+        <!-- /col-md-4 -->
+      </div>
+      <!-- /row -->
+    </div>
+</div>
+
+
+{% endblock %}

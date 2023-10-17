@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+<title>Eliminar {{contact.full_name}}</title>
+{% endblock %}
+
+{% block Contact %}
+<li class="sub-menu">
+  <a class="active" href="javascript:;">
+    <i class="fas fa-user-friends"></i>
+    <span>Contactos</span>
+    </a>
+  <ul class="sub">
+    <li><a href="{% url 'contactList' %}">Lista</a></li>
+    <li><a href="{% url 'contactCreate' %}">Crear</a></li>
+  </ul>
+</li>
+{% endblock %}
+
+{% block content %}
+<div style="margin: auto;">
+    <br><br><br>
+<center>
+    <h3 class="text-dark mb-0">¿Esta seguro que desea eliminar al contacto de {{ object.full_name }}?</h3>
+</center>
+<center>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Si, estoy seguro</button>
+        <a class="btn btn-default" href="{% url 'contactView' contact.slug %}">Cancelar</a>
+    </form>
+</center>  
+</div>
+{% endblock %}
